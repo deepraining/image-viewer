@@ -33,7 +33,7 @@ export default merge.smart(baseConfig, {
     rules: [
       // Extract all .global.css to style.css as is
       {
-        test: /\.global\.css$/,
+        test: /(\.global\.css$|node_modules\/.*?\.css$)/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -52,6 +52,7 @@ export default merge.smart(baseConfig, {
       // Pipe other styles through css modules and append to style.css
       {
         test: /^((?!\.global).)*\.css$/,
+        exclude: [/node_modules/],
         use: [
           {
             loader: MiniCssExtractPlugin.loader
