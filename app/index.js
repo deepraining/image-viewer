@@ -3,6 +3,8 @@ import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import Root from './containers/Root';
 import { configureStore, history } from './store/configureStore';
+import 'antd/lib/style/index.css';
+import '@senntyou/shortcut.css';
 import './app.global.css';
 
 const store = configureStore();

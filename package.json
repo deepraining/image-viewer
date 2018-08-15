@@ -211,6 +211,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.2.0",
+    "@senntyou/shortcut.css": "^0.0.2",
     "antd": "^3.8.1",
     "devtron": "^1.4.0",
     "electron-debug": "^2.0.0",

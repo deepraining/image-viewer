@@ -10,7 +10,7 @@
  *
  * @flow
  */
-import { app, BrowserWindow } from 'electron';
+import {app, BrowserWindow, dialog, ipcMain} from 'electron';
 import MenuBuilder from './menu';
 
 let mainWindow = null;
@@ -62,8 +62,8 @@ app.on('ready', async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    width: 1024,
-    height: 728
+    width: 1000,
+    height: 600
   });
 
   mainWindow.loadURL(`file://${__dirname}/app.html`);
@@ -84,4 +84,13 @@ app.on('ready', async () => {
 
   const menuBuilder = new MenuBuilder(mainWindow);
   menuBuilder.buildMenu();
+});
+
+ipcMain.on('openDirectory', () => {
+  dialog.showOpenDialog({
+    properties: ['openDirectory'],
+  }, directory => {
+    console.log(directory);
+    // mainWindow.webContents.send('openDirectory', directory);
+  });
 });
