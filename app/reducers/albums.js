@@ -6,7 +6,7 @@ type actionType = {
   +type: string
 };
 
-export default function albumsReducer(albums?: Array<albumType>, action: actionType) {
+export default function albumsReducer(albums: Array<albumType> = [], action: actionType) {
   const { type, payload } = action;
 
   switch (type) {

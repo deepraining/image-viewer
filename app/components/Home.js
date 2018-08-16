@@ -1,9 +1,7 @@
 // @flow
-import { ipcRenderer, remote } from 'electron';
+import { ipcRenderer } from 'electron';
 import React, { Component } from 'react';
 import Intro from './Intro';
-
-const store = remote.require('./store');
 
 type Props = {};
 

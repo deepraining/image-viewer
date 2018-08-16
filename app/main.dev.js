@@ -12,6 +12,8 @@
  */
 import {app, BrowserWindow, dialog, ipcMain} from 'electron';
 import MenuBuilder from './menu';
+import openDirectory from './handle/open_directory';
+import share from './share';
 
 let mainWindow = null;
 
@@ -84,13 +86,14 @@ app.on('ready', async () => {
 
   const menuBuilder = new MenuBuilder(mainWindow);
   menuBuilder.buildMenu();
+
+  share.mainWindow = mainWindow;
 });
 
 ipcMain.on('openDirectory', () => {
   dialog.showOpenDialog({
     properties: ['openDirectory'],
   }, directory => {
-    console.log(directory);
-    // mainWindow.webContents.send('openDirectory', directory);
+    if (directory && directory[0]) openDirectory(directory[0]);
   });
 });

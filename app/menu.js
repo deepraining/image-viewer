@@ -1,5 +1,6 @@
 // @flow
 import { Menu, shell, BrowserWindow, dialog } from 'electron';
+import openDirectory from './handle/open_directory';
 
 export default class MenuBuilder {
   mainWindow: BrowserWindow;
@@ -47,12 +48,10 @@ export default class MenuBuilder {
             label: '&Open',
             accelerator: 'Ctrl+O',
             click: () => {
-              // const self = this;
               dialog.showOpenDialog({
                 properties: ['openDirectory'],
               }, directory => {
-                console.log(directory);
-                // self.mainWindow.webContents.send('openDirectory', directory);
+                if (directory && directory[0]) openDirectory(directory[0]);
               });
             }
           },

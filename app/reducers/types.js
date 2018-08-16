@@ -4,7 +4,7 @@ export type imageType = {
 };
 
 export type albumType = {
-  +id: number,
+  +id: string,
   +cover: string,
   +path: string,
   +name: string,
