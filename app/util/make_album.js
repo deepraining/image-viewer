@@ -3,8 +3,10 @@ import fs from 'fs';
 import path from 'path';
 import md5 from 'crypto-md5';
 import trimEnd from 'lodash/trimEnd';
+import findIndex from 'lodash/findIndex';
 import type { albumType, imageType } from '../reducers/types';
-import replaceBackSlash from './replace_back_slash';
+import { replaceBackSlash } from './path';
+import { getStoredAlbums } from './store_in_main';
 
 const validExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
 
@@ -15,6 +17,16 @@ export type resultType = {
 };
 
 export default (dirPath: string): resultType => {
+  const id = md5(dirPath, 'hex');
+  const currentAlbums: Array<albumType> = getStoredAlbums();
+
+  if (findIndex(currentAlbums, item => item.id === id) > -1) {
+    return {
+      success: !1,
+      message: 'You have already added this directory.',
+    };
+  }
+
   let cover: string = '';
   const images: Array<imageType> = [];
 
@@ -41,7 +53,7 @@ export default (dirPath: string): resultType => {
     success: !0,
     message: '',
     album: {
-      id: md5(dirPath, 'hex'),
+      id,
       name: trimEnd(replaceBackSlash(dirPath), '/').split('/').slice(-1)[0],
       path: dirPath,
       cover,

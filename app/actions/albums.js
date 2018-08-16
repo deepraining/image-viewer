@@ -1,5 +1,5 @@
 // @flow
-import { albumType } from '../reducers/types';
+import type { albumType } from '../reducers/types';
 
 export const ADD_ALBUM = 'ADD_ALBUM'; // Add an album.
 export const DELETE_ALBUM = 'DELETE_ALBUM'; // Delete an album.
@@ -8,7 +8,7 @@ export const REFRESH_ALBUM = 'REFRESH_ALBUM'; // Refresh an album by reloading f
 export function add(album: albumType) {
   return {
     type: ADD_ALBUM,
-    album
+    payload: album
   };
 }
 
