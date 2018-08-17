@@ -1,0 +1,71 @@
+.container {
+  position: relative;
+}
+
+.topBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+  z-index: 1;
+
+  .action {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.content {
+  position: relative;
+  padding: 40px 10px 10px 10px;
+  overflow: hidden;
+}
+
+.item {
+  float: left;
+  width: 140px;
+  height: 140px;
+  padding: 10px;
+
+  .inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .cover {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    cursor: pointer;
+  }
+
+  .actions {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+    transition: all 0.5s;
+    transform: translateY(100%);
+  }
+
+  .inner:hover {
+
+    .actions {
+      transform: translateY(0);
+    }
+  }
+
+  .action {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+  }
+}

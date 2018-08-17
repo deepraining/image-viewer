@@ -24,6 +24,7 @@ export default (dirPath: string): resultType => {
     return {
       success: !1,
       message: 'You have already added this directory.',
+      duration: 30
     };
   }
 
@@ -47,6 +48,7 @@ export default (dirPath: string): resultType => {
   if (!images.length) return {
     success: !1,
     message: 'No images found under the directory you chose (not include sub directories).',
+    duration: 30
   };
 
   return {

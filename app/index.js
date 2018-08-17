@@ -1,4 +1,5 @@
 import 'antd/lib/style/index.css';
+import '@fortawesome/fontawesome-free/css/all.css';
 import '@senntyou/shortcut.css';
 import './app.global.css';
 
@@ -25,12 +26,16 @@ render(
 ipcRenderer.on('openDirectory', (e, result) => {
   if (result.success) {
     store.dispatch(addAlbum(result.album));
+    notification.success({
+      message: 'Add',
+      description: 'Add album successfully.',
+    });
   }
   else if (result.message) {
-    notification.open({
-      message: 'Notification',
+    notification[result.type || 'open']({
+      message: 'Info',
       description: result.message,
-      duration: 0,
+      duration: result.duration || 0,
     });
   }
 });
