@@ -48,11 +48,14 @@ export default class MenuBuilder {
             label: '&Open',
             accelerator: 'Ctrl+O',
             click: () => {
-              dialog.showOpenDialog({
-                properties: ['openDirectory'],
-              }, directory => {
-                if (directory && directory[0]) openDirectory(directory[0]);
-              });
+              dialog.showOpenDialog(
+                {
+                  properties: ['openDirectory']
+                },
+                directory => {
+                  if (directory && directory[0]) openDirectory(directory[0]);
+                }
+              );
             }
           },
           {
@@ -127,7 +130,7 @@ export default class MenuBuilder {
             click() {
               shell.openExternal('https://github.com/senntyou');
             }
-          },
+          }
         ]
       }
     ];

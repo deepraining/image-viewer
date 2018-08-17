@@ -14,7 +14,7 @@ import { add as addAlbum } from './actions/albums';
 import { getStoredAlbums } from './util/store_in_renderer';
 
 const initAlbums = getStoredAlbums();
-const store = configureStore({albums: initAlbums});
+const store = configureStore({ albums: initAlbums });
 
 render(
   <AppContainer>
@@ -28,14 +28,13 @@ ipcRenderer.on('openDirectory', (e, result) => {
     store.dispatch(addAlbum(result.album));
     notification.success({
       message: 'Add',
-      description: 'Add album successfully.',
+      description: 'Add album successfully.'
     });
-  }
-  else if (result.message) {
+  } else if (result.message) {
     notification[result.type || 'open']({
       message: 'Info',
       description: result.message,
-      duration: result.duration || 0,
+      duration: result.duration || 0
     });
   }
 });

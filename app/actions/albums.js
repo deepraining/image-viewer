@@ -32,4 +32,3 @@ export function clear() {
     type: CLEAR_ALBUM
   };
 }
-

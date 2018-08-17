@@ -13,4 +13,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(AlbumsActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

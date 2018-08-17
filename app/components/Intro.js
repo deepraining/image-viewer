@@ -15,7 +15,13 @@ export default class Home extends Component<Props> {
   render() {
     return (
       <div className={styles.container}>
-        <button type="button" className={`clean ${styles.content}`} onClick={this.onClick}>Click to select an album!</button>
+        <button
+          type="button"
+          className={`clean ${styles.content}`}
+          onClick={this.onClick}
+        >
+          Click to select an album!
+        </button>
       </div>
     );
   }

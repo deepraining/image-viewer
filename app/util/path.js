@@ -13,4 +13,5 @@
  * @param str
  * @returns {string}
  */
-export const replaceBackSlash = (str: string): string => str.replace(/(\\\\|\\)/g, '/');
+export const replaceBackSlash = (str: string): string =>
+  str.replace(/(\\\\|\\)/g, '/');
