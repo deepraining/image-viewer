@@ -8,7 +8,8 @@ import styles from './Home.scss';
 type Props = {
   albums?: Array<albumType>,
   clear: () => void,
-  del: (id: number) => void
+  del: (id: string) => void,
+  refresh: (id: string) => void,
 };
 
 export default class Home extends Component<Props> {
@@ -23,6 +24,7 @@ export default class Home extends Component<Props> {
 
     this.deleteAllAlbums = this.deleteAllAlbums.bind(this);
     this.onClickDelete = this.onClickDelete.bind(this);
+    this.onClickRefresh = this.onClickRefresh.bind(this);
   }
 
   deleteAllAlbums() {
@@ -48,6 +50,13 @@ export default class Home extends Component<Props> {
     });
   }
 
+  onClickRefresh(e) {
+    const { refresh } = this.props;
+    const id: string = e.target.getAttribute('data-id');
+
+    refresh(id);
+  }
+
   itemsJsx() {
     const { albums } = this.props;
 
@@ -70,6 +79,8 @@ export default class Home extends Component<Props> {
               type="button"
               className={`clean ${styles.action} fa fa-sync-alt fl-right`}
               title="refresh"
+              onClick={this.onClickRefresh}
+              data-id={item.id}
             />
           </div>
         </div>

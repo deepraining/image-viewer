@@ -12,9 +12,12 @@ import Root from './containers/Root';
 import { configureStore, history } from './store/configureStore';
 import { add as addAlbum } from './actions/albums';
 import { getStoredAlbums } from './util/store_in_renderer';
+import share from './share_in_renderer';
 
 const initAlbums = getStoredAlbums();
 const store = configureStore({ albums: initAlbums });
+
+share.store = store;
 
 render(
   <AppContainer>
@@ -27,12 +30,12 @@ ipcRenderer.on('openDirectory', (e, result) => {
   if (result.success) {
     store.dispatch(addAlbum(result.album));
     notification.success({
-      message: 'Add',
-      description: 'Add album successfully.'
+      message: 'Add album',
+      description: 'Add album successfully.',
     });
   } else if (result.message) {
     notification[result.type || 'open']({
-      message: 'Info',
+      message: 'Add album',
       description: result.message,
       duration: result.duration || 0
     });

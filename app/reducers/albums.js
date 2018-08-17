@@ -2,7 +2,7 @@
 import {
   ADD_ALBUM,
   DELETE_ALBUM,
-  REFRESH_ALBUM,
+  REPLACE_ALBUM,
   CLEAR_ALBUM
 } from '../actions/albums';
 import type { albumType } from './types';
@@ -29,8 +29,18 @@ export default function albumsReducer(
       storeAlbums(newAlbums);
       return newAlbums;
     }
-    case REFRESH_ALBUM:
-      return albums;
+    case REPLACE_ALBUM: {
+      const { id, album} = payload;
+
+      const newAlbums = albums.map(item => {
+        if (item.id === id) return album;
+
+        return item;
+      });
+
+      storeAlbums(newAlbums);
+      return newAlbums;
+    }
     case CLEAR_ALBUM: {
       storeAlbums([]);
       return [];
