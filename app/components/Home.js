@@ -10,7 +10,8 @@ type Props = {
   clear: () => void,
   del: (id: string) => void,
   refresh: (id: string) => void,
-  refreshAll: () => void
+  refreshAll: () => void,
+  history: {}
 };
 
 export default class Home extends Component<Props> {
@@ -27,6 +28,7 @@ export default class Home extends Component<Props> {
     this.refreshAllAlbums = this.refreshAllAlbums.bind(this);
     this.onClickDelete = this.onClickDelete.bind(this);
     this.onClickRefresh = this.onClickRefresh.bind(this);
+    this.onClickItem = this.onClickItem.bind(this);
   }
 
   deleteAllAlbums() {
@@ -70,6 +72,13 @@ export default class Home extends Component<Props> {
     refresh(id);
   }
 
+  onClickItem(e) {
+    const { history } = this.props;
+    const id: string = e.target.getAttribute('data-id');
+
+    history.push(`/detail/${id}`);
+  }
+
   itemsJsx() {
     const { albums } = this.props;
 
@@ -79,6 +88,8 @@ export default class Home extends Component<Props> {
           <div
             className={styles.cover}
             style={{ backgroundImage: `url("${item.cover}")` }}
+            onClick={this.onClickItem}
+            data-id={item.id}
           />
           <div className={styles.actions}>
             <button
