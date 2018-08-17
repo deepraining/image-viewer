@@ -31,7 +31,7 @@ ipcRenderer.on('openDirectory', (e, result) => {
     store.dispatch(addAlbum(result.album));
     notification.success({
       message: 'Add album',
-      description: 'Add album successfully.',
+      description: 'Add album successfully.'
     });
   } else if (result.message) {
     notification[result.type || 'open']({

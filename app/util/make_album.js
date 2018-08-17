@@ -49,7 +49,7 @@ export default (dirPath: string): resultType => {
         .slice(-1)[0],
       path: dirPath,
       cover: images[0].path,
-      images,
+      images
     }
   };
 };

@@ -9,6 +9,7 @@ export const ADD_ALBUM = 'ADD_ALBUM'; // Add an album.
 export const DELETE_ALBUM = 'DELETE_ALBUM'; // Delete an album.
 export const REPLACE_ALBUM = 'REPLACE_ALBUM'; // Replace with an new album(by reloading from disk).
 export const CLEAR_ALBUM = 'CLEAR_ALBUM'; // Delete all albums.
+export const REPLACE_ALL_ALBUM = 'REPLACE_ALL_ALBUM'; // Replace with all albums(by reloading from disk).
 
 type actionType = {
   +type: string
@@ -36,8 +37,6 @@ export function refresh(id: string) {
     const currentAlbum = find(albums, item => item.id === id);
     const result = reloadAlbum(currentAlbum.path);
 
-    console.log(result);
-
     if (!result.success) {
       notification[result.type || 'open']({
         message: 'Refresh album',
@@ -47,7 +46,7 @@ export function refresh(id: string) {
       return;
     }
 
-    dispatch(replace(id, {...currentAlbum, images: result.images}));
+    dispatch(replace(id, { ...currentAlbum, images: result.images }));
   };
 }
 
@@ -57,9 +56,32 @@ export function clear() {
   };
 }
 
+export function refreshAll() {
+  return (dispatch: (action: actionType) => void) => {
+    const reloadAlbum = remote.require('./util/reload_album').default;
+
+    const { albums } = share.store.getState();
+    const newAlbums = [];
+    albums.forEach(item => {
+      const result = reloadAlbum(item.path);
+
+      if (result.success) newAlbums.push({ ...item, images: result.images });
+    });
+
+    dispatch(replaceAllAlbums(newAlbums));
+  };
+}
+
 export function replace(id: string, album: albumType) {
   return {
     type: REPLACE_ALBUM,
-    payload: {id, album}
+    payload: { id, album }
+  };
+}
+
+export function replaceAllAlbums(albums: Array<albumType>) {
+  return {
+    type: REPLACE_ALBUM,
+    payload: albums
   };
 }

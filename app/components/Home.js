@@ -10,6 +10,7 @@ type Props = {
   clear: () => void,
   del: (id: string) => void,
   refresh: (id: string) => void,
+  refreshAll: () => void
 };
 
 export default class Home extends Component<Props> {
@@ -23,6 +24,7 @@ export default class Home extends Component<Props> {
     super(props);
 
     this.deleteAllAlbums = this.deleteAllAlbums.bind(this);
+    this.refreshAllAlbums = this.refreshAllAlbums.bind(this);
     this.onClickDelete = this.onClickDelete.bind(this);
     this.onClickRefresh = this.onClickRefresh.bind(this);
   }
@@ -33,8 +35,19 @@ export default class Home extends Component<Props> {
     clear();
 
     notification.success({
-      message: 'Delete',
+      message: 'Delete all albums',
       description: 'Delete all albums successfully.'
+    });
+  }
+
+  refreshAllAlbums() {
+    const { refreshAll } = this.props;
+
+    refreshAll();
+
+    notification.success({
+      message: 'Refresh all albums',
+      description: 'Refresh all albums successfully.'
     });
   }
 
@@ -45,7 +58,7 @@ export default class Home extends Component<Props> {
     del(id);
 
     notification.success({
-      message: 'Delete',
+      message: 'Delete album',
       description: 'Delete album successfully.'
     });
   }
@@ -107,6 +120,7 @@ export default class Home extends Component<Props> {
             type="button"
             className={`clean ${styles.action} fa fa-sync-alt fl-right`}
             title="refresh all albums"
+            onClick={this.refreshAllAlbums}
           />
         </div>
         <div className={styles.content}>{this.itemsJsx()}</div>

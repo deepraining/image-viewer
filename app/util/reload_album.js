@@ -1,5 +1,5 @@
 // @flow
-import type {imageType} from '../reducers/types';
+import type { imageType } from '../reducers/types';
 import getImages from './get_images';
 import { dirExist } from './file';
 
@@ -17,7 +17,7 @@ export default (dirPath: string): resultType => {
       success: !1,
       message: 'Directory of album which you are refreshing does not exist.',
       duration: 30,
-      type: 'error',
+      type: 'error'
     };
   }
 
@@ -29,7 +29,7 @@ export default (dirPath: string): resultType => {
       message:
         'No images found under the directory you chose (not include sub directories).',
       duration: 30,
-      type: 'error',
+      type: 'error'
     };
 
   return {
