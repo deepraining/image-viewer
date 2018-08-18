@@ -12,6 +12,6 @@ export default class DetailPage extends Component<Props> {
   props: Props;
 
   render() {
-    return <Detail {...this.props}/>;
+    return <Detail {...this.props} />;
   }
 }

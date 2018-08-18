@@ -1,9 +1,9 @@
 // @flow
 import md5 from 'crypto-md5';
 import trimEnd from 'lodash/trimEnd';
-import type {albumType, imageType} from '../reducers/types';
-import {replaceBackSlash} from './path';
-import {getStoredAlbums} from './store_in_main';
+import type { albumType, imageType } from '../reducers/types';
+import { replaceBackSlash } from './path';
+import { getStoredAlbums } from './store_in_main';
 import getImages from './get_images';
 
 export type resultType = {
@@ -32,7 +32,7 @@ export default (directories: Array<string>): resultType => {
           duration: 30
         };
       }
-      else continue;
+      continue;
     }
 
     const images: Array<imageType> = getImages(dirPath);
@@ -47,7 +47,7 @@ export default (directories: Array<string>): resultType => {
           duration: 30
         };
       }
-      else continue;
+      continue;
     }
 
     albums.push({
@@ -73,6 +73,6 @@ export default (directories: Array<string>): resultType => {
   return {
     success: !0,
     message: '',
-    albums,
+    albums
   };
-}
+};

@@ -53,7 +53,8 @@ export default class MenuBuilder {
                   properties: ['openDirectory', 'multiSelections']
                 },
                 directories => {
-                  if (directories && directories.length) openDirectory(directories);
+                  if (directories && directories.length)
+                    openDirectory(directories);
                 }
               );
             }
