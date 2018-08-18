@@ -35,10 +35,14 @@ export default class Home extends Component<Props> {
   componentDidMount() {
     const { images } = this.album;
 
-    this.diaporama = Diaporama(this.contentElement.current, getDiaporamaData(images), {
-      autoplay: true,
-      loop: true
-    });
+    this.diaporama = Diaporama(
+      this.contentElement.current,
+      getDiaporamaData(images),
+      {
+        autoplay: true,
+        loop: true
+      }
+    );
 
     this.addListeners();
   }
@@ -59,7 +63,10 @@ export default class Home extends Component<Props> {
     this.diaporama.width = w;
     this.diaporama.height = h;
     // heuristic to degrade
-    this.diaporama.resolution = Math.min(window.devicePixelRatio||1, Math.ceil((threshold) / (w * h)));
+    this.diaporama.resolution = Math.min(
+      window.devicePixelRatio || 1,
+      Math.ceil(threshold / (w * h))
+    );
   }
 
   mouseMove() {
@@ -114,9 +121,13 @@ export default class Home extends Component<Props> {
   render() {
     return (
       <div className={styles.container}>
-        <div className={styles.content} ref={this.contentElement}/>
-        <button type="button" className={`clean ${styles.close} fa fa-times`} onClick={this.back}
-        ref={this.closeElement}/>
+        <div className={styles.content} ref={this.contentElement} />
+        <button
+          type="button"
+          className={`clean ${styles.close} fa fa-times`}
+          onClick={this.back}
+          ref={this.closeElement}
+        />
       </div>
     );
   }

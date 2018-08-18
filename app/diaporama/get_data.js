@@ -13,7 +13,10 @@ export default (images: Array<imageType>): {} => {
     const fromTo = getFromTo();
 
     timeline.push({
-      kenburns: {easing: easingValues[random(easingValues.length - 1)], ...fromTo},
+      kenburns: {
+        easing: easingValues[random(easingValues.length - 1)],
+        ...fromTo
+      },
       image: item.path,
       duration: 4000,
       transitionNext: {
@@ -27,5 +30,5 @@ export default (images: Array<imageType>): {} => {
     generator,
     timeline,
     transitions
-  }
-}
+  };
+};

@@ -16,14 +16,14 @@ export default () => {
       fromScaleIsMinScale ? minScale : maxScale,
       [
         fromCenterXIsMinCenterX ? minCenterX : maxCenterX,
-        fromCenterYIsMinCenterY ? minCenterY : maxCenterY,
+        fromCenterYIsMinCenterY ? minCenterY : maxCenterY
       ]
     ],
     to: [
       !fromScaleIsMinScale ? minScale : maxScale,
       [
         !fromCenterXIsMinCenterX ? minCenterX : maxCenterX,
-        !fromCenterYIsMinCenterY ? minCenterY : maxCenterY,
+        !fromCenterYIsMinCenterY ? minCenterY : maxCenterY
       ]
     ]
   };
