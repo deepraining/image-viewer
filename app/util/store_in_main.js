@@ -1,8 +1,7 @@
 // @flow
 
 import type { albumType } from '../reducers/types';
-
-const store = require('../store');
+import store from '../store';
 
 export const getStoredAlbums = (): Array<albumType> =>
   JSON.parse(store.get('albums', '[]'));

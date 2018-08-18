@@ -1,6 +1,42 @@
 // @flow
 import { Menu, shell, BrowserWindow, dialog } from 'electron';
 import openDirectory from './handle/open_directory';
+import config from './config';
+import updateConfig from './util/update_config';
+import easing from './diaporama/easing';
+
+const durationMenu = [2, 3, 4, 5, 6, 7, 8, 9, 10].map(item => {
+  const time = item * 1000;
+  return {
+    label: `${time} ms`,
+    type: 'radio',
+    checked: config.duration === time,
+    click: () => {
+      updateConfig('duration', time);
+    }
+  };
+});
+
+const transitionDurationMenu = [2, 5, 8, 10, 15, 20, 30, 40].map(item => {
+  const time = item * 100;
+  return {
+    label: `${time} ms`,
+    type: 'radio',
+    checked: config.transitionDuration === time,
+    click: () => {
+      updateConfig('transitionDuration', time);
+    }
+  };
+});
+
+const easingMenu = ['random', ...Object.keys(easing)].map(item => ({
+  label: item,
+  type: 'radio',
+  checked: config.easing === item,
+  click: () => {
+    updateConfig('easing', item);
+  }
+}));
 
 export default class MenuBuilder {
   mainWindow: BrowserWindow;
@@ -42,10 +78,10 @@ export default class MenuBuilder {
   buildTemplate() {
     return [
       {
-        label: '&File',
+        label: 'File',
         submenu: [
           {
-            label: '&Open',
+            label: 'Open',
             accelerator: 'Ctrl+O',
             click: () => {
               dialog.showOpenDialog(
@@ -60,7 +96,7 @@ export default class MenuBuilder {
             }
           },
           {
-            label: '&Close',
+            label: 'Close',
             accelerator: 'Ctrl+W',
             click: () => {
               this.mainWindow.close();
@@ -69,19 +105,19 @@ export default class MenuBuilder {
         ]
       },
       {
-        label: '&View',
+        label: 'View',
         submenu:
           process.env.NODE_ENV === 'development'
             ? [
                 {
-                  label: '&Reload',
+                  label: 'Reload',
                   accelerator: 'Ctrl+R',
                   click: () => {
                     this.mainWindow.webContents.reload();
                   }
                 },
                 {
-                  label: 'Toggle &Full Screen',
+                  label: 'Toggle Full Screen',
                   accelerator: 'F11',
                   click: () => {
                     this.mainWindow.setFullScreen(
@@ -90,7 +126,7 @@ export default class MenuBuilder {
                   }
                 },
                 {
-                  label: 'Toggle &Developer Tools',
+                  label: 'Toggle Developer Tools',
                   accelerator: 'Alt+Ctrl+I',
                   click: () => {
                     this.mainWindow.toggleDevTools();
@@ -99,7 +135,7 @@ export default class MenuBuilder {
               ]
             : [
                 {
-                  label: 'Toggle &Full Screen',
+                  label: 'Toggle Full Screen',
                   accelerator: 'F11',
                   click: () => {
                     this.mainWindow.setFullScreen(
@@ -108,6 +144,23 @@ export default class MenuBuilder {
                   }
                 }
               ]
+      },
+      {
+        label: 'Options',
+        submenu: [
+          {
+            label: 'Duration',
+            submenu: durationMenu
+          },
+          {
+            label: 'Transition Duration',
+            submenu: transitionDurationMenu
+          },
+          {
+            label: 'Easing Function',
+            submenu: easingMenu
+          }
+        ]
       },
       {
         label: 'Help',
