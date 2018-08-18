@@ -29,6 +29,7 @@ export default class Home extends Component<Props> {
     this.onClickDelete = this.onClickDelete.bind(this);
     this.onClickRefresh = this.onClickRefresh.bind(this);
     this.onClickItem = this.onClickItem.bind(this);
+    this.onClickPlay = this.onClickPlay.bind(this);
   }
 
   deleteAllAlbums() {
@@ -79,6 +80,13 @@ export default class Home extends Component<Props> {
     history.push(`/detail/${id}`);
   }
 
+  onClickPlay(e) {
+    const { history } = this.props;
+    const id: string = e.target.getAttribute('data-id');
+
+    history.push(`/play/${id}`);
+  }
+
   itemsJsx() {
     const { albums } = this.props;
 
@@ -104,6 +112,13 @@ export default class Home extends Component<Props> {
               className={`clean ${styles.action} fa fa-sync-alt fl-right`}
               title="refresh"
               onClick={this.onClickRefresh}
+              data-id={item.id}
+            />
+            <button
+              type="button"
+              className={`clean ${styles.action} fa fa-expand fl-right`}
+              title="expand"
+              onClick={this.onClickPlay}
               data-id={item.id}
             />
           </div>

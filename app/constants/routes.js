@@ -1,4 +1,5 @@
 export default {
   HOME: '/',
-  DETAIL: '/detail/:id'
+  DETAIL: '/detail/:id',
+  PLAY: '/play/:id',
 };

@@ -42,16 +42,19 @@
     height: 120px;
     line-height: 120px;
     text-align: center;
-    overflow: hidden;
     cursor: pointer;
-
-    &:hover {
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-    }
 
     .image {
       max-width: 100%;
       max-height: 100%;
+    }
+
+
+    &:hover {
+
+      .image{
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+      }
     }
   }
 }

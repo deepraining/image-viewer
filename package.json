@@ -215,6 +215,7 @@
     "antd": "^3.8.1",
     "crypto-md5": "^1.0.0",
     "devtron": "^1.4.0",
+    "diaporama": "^2.2.0",
     "electron-debug": "^2.0.0",
     "electron-store": "^2.0.0",
     "history": "^4.7.2",
