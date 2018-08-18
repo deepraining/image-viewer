@@ -93,10 +93,10 @@ app.on('ready', async () => {
 ipcMain.on('openDirectory', () => {
   dialog.showOpenDialog(
     {
-      properties: ['openDirectory']
+      properties: ['openDirectory', 'multiSelections']
     },
-    directory => {
-      if (directory && directory[0]) openDirectory(directory[0]);
+    directories => {
+      if (directories && directories.length) openDirectory(directories);
     }
   );
 });

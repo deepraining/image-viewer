@@ -1,6 +1,6 @@
 // @flow
 import {
-  ADD_ALBUM,
+  ADD_ALBUMS,
   DELETE_ALBUM,
   REPLACE_ALBUM,
   CLEAR_ALBUM,
@@ -20,8 +20,8 @@ export default function albumsReducer(
   const { type, payload } = action;
 
   switch (type) {
-    case ADD_ALBUM: {
-      const newAlbums = [...albums, payload];
+    case ADD_ALBUMS: {
+      const newAlbums = [...albums, ...payload];
       storeAlbums(newAlbums);
       return newAlbums;
     }

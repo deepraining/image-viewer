@@ -16,6 +16,12 @@
     width: 30px;
     height: 30px;
   }
+
+  .title {
+    width: 100%;
+    line-height: 30px;
+    text-align: center;
+  }
 }
 
 .content {
@@ -37,7 +43,11 @@
     line-height: 120px;
     text-align: center;
     overflow: hidden;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    }
 
     .image {
       max-width: 100%;

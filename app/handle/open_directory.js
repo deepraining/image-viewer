@@ -1,10 +1,10 @@
 // @flow
 
 import share from '../share';
-import makeAlbum from '../util/make_album';
+import makeAlbums from '../util/make_albums';
 
-export default (dirPath: string): void => {
-  const result = makeAlbum(dirPath);
+export default (directories: Array<string>): void => {
+  const result = makeAlbums(directories);
 
   share.mainWindow.webContents.send('openDirectory', result);
 };

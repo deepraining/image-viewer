@@ -10,7 +10,7 @@ import { AppContainer } from 'react-hot-loader';
 import { notification } from 'antd';
 import Root from './containers/Root';
 import { configureStore, history } from './store/configureStore';
-import { add as addAlbum } from './actions/albums';
+import { add as addAlbums } from './actions/albums';
 import { getStoredAlbums } from './util/store_in_renderer';
 import share from './share_in_renderer';
 
@@ -28,7 +28,7 @@ render(
 
 ipcRenderer.on('openDirectory', (e, result) => {
   if (result.success) {
-    store.dispatch(addAlbum(result.album));
+    store.dispatch(addAlbums(result.albums));
     notification.success({
       message: 'Add album',
       description: 'Add album successfully.'
