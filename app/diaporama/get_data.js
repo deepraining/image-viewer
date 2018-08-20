@@ -23,8 +23,14 @@ export default (images: Array<imageType>): {} => {
 
     let transitionName;
     if (config.transition === 'none') transitionName = undefined;
-    else if (config.transition === 'random') transitionName = transitions[random(transitions.length - 1)].name;
-    else if (!transitions.find(transitionItem => transitionItem.name === config.transition)) transitionName = undefined;
+    else if (config.transition === 'random')
+      transitionName = transitions[random(transitions.length - 1)].name;
+    else if (
+      !transitions.find(
+        transitionItem => transitionItem.name === config.transition
+      )
+    )
+      transitionName = undefined;
     else transitionName = config.transition;
 
     timeline.push({

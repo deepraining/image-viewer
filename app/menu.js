@@ -40,7 +40,11 @@ const easingMenu = ['random', ...Object.keys(easing)].map(item => ({
   }
 }));
 
-const transitionsMenu = [{name: 'none'}, {name: 'random'}, ...transitions].map(item => ({
+const transitionsMenu = [
+  { name: 'none' },
+  { name: 'random' },
+  ...transitions
+].map(item => ({
   label: item.name,
   type: 'radio',
   checked: config.transition === item.name,
@@ -174,7 +178,7 @@ export default class MenuBuilder {
           {
             label: 'Transition',
             submenu: transitionsMenu
-          },
+          }
         ]
       },
       {
@@ -187,7 +191,7 @@ export default class MenuBuilder {
               app.relaunch();
               app.exit(0);
             }
-          },
+          }
         ]
       },
       {
