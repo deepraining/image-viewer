@@ -50,7 +50,6 @@
     "files": [
       "dist/",
       "node_modules/",
-      "transitions/",
       "app.html",
       "main.prod.js",
       "main.prod.js.map",

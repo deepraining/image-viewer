@@ -1,10 +1,11 @@
 // @flow
-import { Menu, shell, BrowserWindow, dialog } from 'electron';
+import { app, Menu, shell, BrowserWindow, dialog } from 'electron';
+import transitions from './diaporama/transitions';
 import openDirectory from './handle/open_directory';
 import config from './config';
+import store from './store';
 import updateConfig from './util/update_config';
 import easing from './diaporama/easing';
-import transitions from './diaporama/transitions';
 
 const durationMenu = [2, 3, 4, 5, 6, 7, 8, 9, 10].map(item => {
   const time = item * 1000;
@@ -39,12 +40,12 @@ const easingMenu = ['random', ...Object.keys(easing)].map(item => ({
   }
 }));
 
-const transitionsMenu = ['none', 'random', ...Object.keys(transitions)].map(item => ({
-  label: item,
+const transitionsMenu = [{name: 'none'}, {name: 'random'}, ...transitions].map(item => ({
+  label: item.name,
   type: 'radio',
-  checked: config.easing === item,
+  checked: config.transition === item.name,
   click: () => {
-    updateConfig('easing', item);
+    updateConfig('transition', item.name);
   }
 }));
 
@@ -169,7 +170,24 @@ export default class MenuBuilder {
           {
             label: 'Easing Function',
             submenu: easingMenu
-          }
+          },
+          {
+            label: 'Transition',
+            submenu: transitionsMenu
+          },
+        ]
+      },
+      {
+        label: 'Tool',
+        submenu: [
+          {
+            label: 'Clear All Cache',
+            click: () => {
+              store.clear();
+              app.relaunch();
+              app.exit(0);
+            }
+          },
         ]
       },
       {
