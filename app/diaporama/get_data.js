@@ -8,7 +8,7 @@ import getFromTo from './get_from_to';
 import easing, { easingValues } from './easing';
 
 export default (images: Array<imageType>): {} => {
-  const config = remote.require('./config');
+  const config = remote.getGlobal('shareConfig');
 
   const timeline = [];
 

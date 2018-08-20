@@ -14,6 +14,13 @@ import { app, BrowserWindow, dialog, ipcMain } from 'electron';
 import MenuBuilder from './menu';
 import openDirectory from './handle/open_directory';
 import share from './share';
+import store from './store';
+import config from './config';
+import reloadAlbum from './util/reload_album';
+
+global.shareStore = store;
+global.shareConfig = config;
+global.shareReloadAlbum = reloadAlbum;
 
 let mainWindow = null;
 

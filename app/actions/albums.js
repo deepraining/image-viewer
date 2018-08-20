@@ -30,7 +30,7 @@ export function del(id: string) {
 
 export function refresh(id: string) {
   return (dispatch: (action: actionType) => void) => {
-    const reloadAlbum = remote.require('./util/reload_album').default;
+    const reloadAlbum = remote.getGlobal('shareReloadAlbum');
 
     const { albums } = share.store.getState();
     const currentAlbum = albums.find(item => item.id === id);
@@ -46,6 +46,11 @@ export function refresh(id: string) {
     }
 
     dispatch(replace(id, { ...currentAlbum, images: result.images }));
+
+    notification.success({
+      message: 'Refresh album',
+      description: 'Refresh album successfully.'
+    });
   };
 }
 
@@ -57,7 +62,7 @@ export function clear() {
 
 export function refreshAll() {
   return (dispatch: (action: actionType) => void) => {
-    const reloadAlbum = remote.require('./util/reload_album').default;
+    const reloadAlbum = remote.getGlobal('shareReloadAlbum');
 
     const { albums } = share.store.getState();
     const newAlbums = [];

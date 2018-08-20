@@ -3,7 +3,7 @@
 import { remote } from 'electron';
 import type { albumType } from '../reducers/types';
 
-const store = remote.require('./store');
+const store = remote.getGlobal('shareStore');
 
 export const getStoredAlbums = (): Array<albumType> =>
   JSON.parse(store.get('albums', '[]'));
