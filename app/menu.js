@@ -4,6 +4,7 @@ import openDirectory from './handle/open_directory';
 import config from './config';
 import updateConfig from './util/update_config';
 import easing from './diaporama/easing';
+import transitions from './diaporama/transitions';
 
 const durationMenu = [2, 3, 4, 5, 6, 7, 8, 9, 10].map(item => {
   const time = item * 1000;
@@ -30,6 +31,15 @@ const transitionDurationMenu = [2, 5, 8, 10, 15, 20, 30, 40].map(item => {
 });
 
 const easingMenu = ['random', ...Object.keys(easing)].map(item => ({
+  label: item,
+  type: 'radio',
+  checked: config.easing === item,
+  click: () => {
+    updateConfig('easing', item);
+  }
+}));
+
+const transitionsMenu = ['none', 'random', ...Object.keys(transitions)].map(item => ({
   label: item,
   type: 'radio',
   checked: config.easing === item,
