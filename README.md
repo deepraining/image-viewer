@@ -36,6 +36,13 @@ npm run dev
 # run in production mode
 npm run start
 
-# package into .exe .deb .dmg
-npm run package-all/package-win/package-linux/package-mac
+# create installer
+
+npm run package-all # create installer for linux&win&mac.
+
+npm run package-linux # create installer only for linux.
+
+npm run package-win # create installer only for win.
+
+npm run package-mac # create installer only for mac.
 ```
