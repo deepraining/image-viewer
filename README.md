@@ -12,7 +12,7 @@ An image viewer electron application based on React, React Router.
 
 ![preview](./screen/preview.png)
 
-![play](./screen/play.gif)
+![play](./screen/play.png)
 
 ## related
 
