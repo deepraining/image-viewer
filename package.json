@@ -102,16 +102,11 @@
   },
   "keywords": [
     "electron",
-    "boilerplate",
     "react",
     "redux",
-    "flow",
-    "sass",
-    "webpack",
-    "hot",
-    "reload",
     "image",
-    "viewer"
+    "viewer",
+    "player"
   ],
   "homepage": "https://github.com/senntyou/image-viewer#readme",
   "jest": {
