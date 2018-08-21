@@ -2,6 +2,8 @@
 
 An image viewer electron application based on React, React Router.
 
+## preview
+
 ![intro](./screen/intro.png)
 
 ![home](./screen/home.png)
