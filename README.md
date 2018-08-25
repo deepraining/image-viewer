@@ -14,9 +14,9 @@ An image viewer electron application based on React, React Router.
 
 ![play](./screen/play.png)
 
-![play](https://user-images.githubusercontent.com/12265053/44616256-eff5a900-a87e-11e8-9598-f09f25582172.gif)
-
 ![play](https://user-images.githubusercontent.com/12265053/44616267-3e0aac80-a87f-11e8-9c35-6451d91afe0a.gif)
+
+![play](https://user-images.githubusercontent.com/12265053/44616256-eff5a900-a87e-11e8-9598-f09f25582172.gif)
 
 ## related
 
