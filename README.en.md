@@ -1,10 +1,10 @@
 # image-viewer
 
-[English Documentation](./README.en.md)
+[中文文档](./README.md)
 
-一个基于 Electron, React, React Router 开发的图片查看器.
+An image viewer application based on Electron, React, React Router.
 
-## 预览
+## preview
 
 ![intro](./screen/intro.png)
 
@@ -20,35 +20,35 @@
 
 ![play](https://user-images.githubusercontent.com/12265053/44616256-eff5a900-a87e-11e8-9598-f09f25582172.gif)
 
-## 相关
+## related
 
 - [electron-react-boilerplate](https://github.com/chentsulin/electron-react-boilerplate)
 - [diaporama](https://github.com/gre/diaporama)
 - [ant-design](https://github.com/ant-design/ant-design)
 - [react-medium-image-zoom](https://github.com/rpearce/react-medium-image-zoom)
 
-## 开发
+## development
 
 ```
-# clone 仓库
+# clone repository
 git clone https://github.com/senntyou/image-viewer.git
 
-# 安装依赖
+# install dependencies
 npm install
 
-# 开发
+# dev
 npm run dev
 
-# 在 production 模式下运行
+# run in production mode
 npm run start
 
-# 创建安装文件
+# create installer
 
-npm run package-all # 创建安装文件 for linux&win&mac.
+npm run package-all # create installer for linux&win&mac.
 
-npm run package-linux # 创建安装文件 only for linux.
+npm run package-linux # create installer only for linux.
 
-npm run package-win # 创建安装文件 only for win.
+npm run package-win # create installer only for win.
 
-npm run package-mac # 创建安装文件 only for mac.
+npm run package-mac # create installer only for mac.
 ```
